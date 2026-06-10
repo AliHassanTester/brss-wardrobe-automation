@@ -47,7 +47,9 @@
     "rimraf": "^6.0.1",
     "speakeasy": "^2.0.0",
     "typescript": "5.3",
-    "typescript-eslint": "^7.18.0"
+    "typescript-eslint": "^7.18.0",
+      "precommit-lint": "lint-staged --config src/linters/lintstagedrc.json src"
+
   },
   "dependencies": {
     "@axe-core/playwright": "^4.5.2",
@@ -63,3 +65,4 @@
   "keywords": [],
   "type": "commonjs"
 }
+

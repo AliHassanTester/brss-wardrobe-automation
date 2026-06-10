@@ -1,16 +1,14 @@
 import { TestCaseData } from "../../interfaces/testcase.data.interface";
-import { DimensionData } from "@interfaces/Dimension.interface";
+import { DoorDesignData  } from "../../interfaces/doordesignfull.interface";
 
-// 1. Ek combined interface banaya jo data aur test info dono ko hold karega
 export interface DoorDesignFullTestData {
     testCaseData: TestCaseData;
-    dimensionData: DimensionData; 
+    doorDesignData : DoorDesignData; 
 }
 
-
 const doordesignfullTestData: { [key: string]: DoorDesignFullTestData } = {
-    "dimension-Data": {
-        dimensionData: { 
+    "doorDesign-Data": {
+        doorDesignData : { 
             widthInput: "6000",
             heightInput: "3000",
         },
@@ -27,7 +25,7 @@ export function getdoordesignfull(testCase: string): DoorDesignFullTestData {
     const data = doordesignfullTestData[testCase];
 
     if (!data) {
-        throw new Error(`Dimension test case data not found for: ${testCase}`);
+        throw new Error(`Door Design test case data not found for: ${testCase}`);
     }
 
     return data;

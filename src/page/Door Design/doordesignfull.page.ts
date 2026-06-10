@@ -15,41 +15,52 @@ export class doorDesignFullPage {
     private get locators() {
         return {
             
-            canvas: this.page.locator("//body/div[@id='root']/div/div[1]/div[1]/div[1]/canvas[1]"), 
-
-            dimensionButton: this.page.getByText('Dimensions', { exact: false }),
-            widthInput: this.page.locator("//div[@id='widthSet']//input"),
-            heightInput: this.page.locator("//div[@id='heightSet']//input"),
-            
-            doordesignbutton: this.page.getByText('Door Design', { exact: false }),
-
-            
-            Solobutton: this.page.locator("//div[text()='Solo']"),
-            duobutton: this.page.locator("//div[text()='Duo']"),
-            triobutton: this.page.locator("//div[text()='Trio']"),
-            quattrobutton: this.page.locator("//div[text()='Quattro']"),
-            continentalbtton: this.page.locator("//div[text()='Continental']"),
-            defaultbutton: this.page.locator("//div[text()='Default']"),
-
-            
-            design1button: this.page.locator("//div[text()='Design #1']"),
-            design2button: this.page.locator("//div[text()='Design #2']"),
-            design3button: this.page.locator("//div[text()='Design#3']"),
-
-            
-            customlayoutbutton: this.page.locator("//button[text()='Custom Layout']"),
-            alignequallybutton: this.page.locator("//button[text()='Align Equally']"),
-
-            
-            deletebutton1: this.page.locator("(//i[contains(@style, 'font-size: 14px') and contains(@style, 'padding: 0px')])[1]"),
-            deletebutton2: this.page.locator("(//i[contains(@style, 'font-size: 14px') and contains(@style, 'padding: 0px')])[1]"),
-            deletebutton3: this.page.locator("(//i[contains(@style, 'font-size: 14px') and contains(@style, 'padding: 0px')])[1]"),
-            deletebutton4: this.page.locator("(//i[contains(@style, 'font-size: 14px') and contains(@style, 'padding: 0px')])[1]"),
-
-            addbutton1: this.page.locator("(//i[@class='bi bi-plus-lg' and contains(@style, 'padding: 0px')])[2]"),
-            addbutton2: this.page.locator("(//i[@class='bi bi-plus-lg' and contains(@style, 'padding: 0px')])[2]"),
-            addbutton3: this.page.locator("(//i[@class='bi bi-plus-lg' and contains(@style, 'padding: 0px')])[3]"),
-            // addbutton4: this.page.locator("(//i[@class='bi bi-plus-lg' and contains(@style, 'padding: 0px')])[4]"),
+            canvas:
+                this.page.locator("//body/div[@id='root']/div/div[1]/div[1]/div[1]/canvas[1]"), 
+            dimensionButton:
+                this.page.getByText('Dimensions', { exact: false }),
+            widthInput:
+                this.page.locator("//div[@id='widthSet']//input"),
+            heightInput:
+                this.page.locator("//div[@id='heightSet']//input"),
+            doordesignbutton:
+                this.page.getByText('Door Design', { exact: false }),
+            Solobutton:
+                this.page.locator("//div[text()='Solo']"),
+            duobutton:
+                this.page.locator("//div[text()='Duo']"),
+            triobutton:
+                this.page.locator("//div[text()='Trio']"),
+            quattrobutton:
+                this.page.locator("//div[text()='Quattro']"),
+            continentalbtton:
+                this.page.locator("//div[text()='Continental']"),
+            defaultbutton:
+                this.page.locator("//div[text()='Default']"),
+            design1button:
+                this.page.locator("//div[text()='Design #1']"),
+            design2button:
+                this.page.locator("//div[text()='Design #2']"),
+            design3button:
+                this.page.locator("//div[text()='Design#3']"),
+            customlayoutbutton:
+                this.page.locator("//button[text()='Custom Layout']"),
+            alignequallybutton:
+                this.page.locator("//button[text()='Align Equally']"),
+            deletebutton1:
+                this.page.locator("(//i[contains(@style, 'font-size: 14px') and contains(@style, 'padding: 0px')])[1]"),
+            deletebutton2:
+                this.page.locator("(//i[contains(@style, 'font-size: 14px') and contains(@style, 'padding: 0px')])[1]"),
+            deletebutton3:
+                this.page.locator("(//i[contains(@style, 'font-size: 14px') and contains(@style, 'padding: 0px')])[1]"),
+            deletebutton4:
+                this.page.locator("(//i[contains(@style, 'font-size: 14px') and contains(@style, 'padding: 0px')])[1]"),
+            addbutton1:
+                this.page.locator("(//i[@class='bi bi-plus-lg' and contains(@style, 'padding: 0px')])[2]"),
+            addbutton2:
+                this.page.locator("(//i[@class='bi bi-plus-lg' and contains(@style, 'padding: 0px')])[2]"),
+            addbutton3:
+                this.page.locator("(//i[@class='bi bi-plus-lg' and contains(@style, 'padding: 0px')])[3]"),
         };
     }
 
@@ -60,7 +71,6 @@ export class doorDesignFullPage {
         });
     }
 
-   
     public async dimensionFlow(width: string, height: string): Promise<void> {
         await test.step("Set Dimensions", async () => {
             await this.locators.dimensionButton.click();
@@ -71,7 +81,6 @@ export class doorDesignFullPage {
         });
     }
 
-    
     public async clickDoorDesignAndWait(): Promise<void> {
         await test.step("Click Door Design and wait 10 seconds", async () => {
             await this.locators.doordesignbutton.click();
@@ -79,7 +88,6 @@ export class doorDesignFullPage {
         });
     }
 
-    
     public async verifyBasicLayouts(): Promise<void> {
         await test.step("Select Basic Layouts one by one", async () => {
             const layouts = [
@@ -100,7 +108,6 @@ export class doorDesignFullPage {
         });
     }
 
-    
     public async verifyDesignerSelections(): Promise<void> {
         await test.step("Select Designer Selections one by one", async () => {
             const designs = [
@@ -118,7 +125,6 @@ export class doorDesignFullPage {
         });
     }
 
-    
     public async verifyCustomLayoutFlow(): Promise<void> {
         await test.step("Custom Layout: Delete 4, Add 4, Align Equally", async () => {
             await this.locators.customlayoutbutton.click();

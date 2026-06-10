@@ -37,35 +37,21 @@ test.describe('Doors Editor - Panel Finishes Automation', () => {
         
         await finishesPage.navigateToUrl();
         await finishesPage.clickPanelFinishes();
-        
-        
         await finishesPage.clickPolytecWoodmatt1();
         await finishesPage.applyOnAllDoorsAndCompare();
-        
-        
         await finishesPage.clickPolytecWoodmatt2();
         await finishesPage.applyOnAllDoorsAndCompare();
     });
 
-    test.only('Test 5: Laminex Truescale Absolute Grain', async ({ page }, testInfo) => {
+    test('Test 5: Laminex Truescale Absolute Grain', async ({ page }, testInfo) => {
         const finishesPage = new PanelFinishesPage(page, testInfo);
         
         await finishesPage.navigateToUrl();
         await finishesPage.clickPanelFinishes();
-        
-        
         await finishesPage.clickLaminexGrain1();
         await finishesPage.applyOnAllDoorsAndCompare();
-        
-        
         await finishesPage.clickLaminexGrain2();
         await finishesPage.applyOnAllDoorsAndCompare();
-        
-       
-        // await finishesPage.clickLaminexGrain3();
-        // await finishesPage.applyOnAllDoorsAndCompare();
-        
-        
         await finishesPage.clickLaminexGrain4();
         await finishesPage.applyOnAllDoorsAndCompare();
     });

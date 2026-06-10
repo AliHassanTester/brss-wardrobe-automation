@@ -1,37 +1,37 @@
-// import { test } from '@fixtures/page.fixtures';
-// import { logTestCaseData } from '@utilities/test.helper.utils';
-// import { getdoordesignfull } from '../../data/doordesignfull/doordesignfull.data'; // Path theek kar lena
+import { test } from '@fixtures/page.fixtures';
+import { logTestCaseData } from '@utilities/test.helper.utils';
+import { getdoordesignfull } from '../../data/doordesignfull/doordesignfull.data';
 
-// test.describe('Feature: Door Design Independent Tests', () => {
+test.describe('Feature: Door Design Independent Tests', () => {
 
-//     test.setTimeout(120000); 
-//     const dimensionScenario = getdoordesignfull('dimension-Data');
+    test.setTimeout(120000); 
+    const dimensionScenario = getdoordesignfull('doorDesign-Data');
 
-//     test('Test 1: Basic Layouts Flow', async ({ doorDesignFullPage }, testInfo) => { 
-//         logTestCaseData(testInfo, dimensionScenario.testCaseData);
+    test('Test 1: Basic Layouts Flow', async ({ DoorDesignFullPage }, testInfo) => { 
+        logTestCaseData(testInfo, dimensionScenario.testCaseData);
         
-//         await doorDesignFullPage.navigateToLoginPage();
-//         await doorDesignFullPage.dimensionFlow(dimensionScenario.dimensionData.widthInput, dimensionScenario.dimensionData.heightInput);
-//         await doorDesignFullPage.clickDoorDesignAndWait();
-//         await doorDesignFullPage.verifyBasicLayouts();
-//     });
+        await DoorDesignFullPage.navigateToLoginPage();
+        await DoorDesignFullPage.dimensionFlow(dimensionScenario.doorDesignData.widthInput, dimensionScenario.doorDesignData.heightInput);
+        await DoorDesignFullPage.clickDoorDesignAndWait();
+        await DoorDesignFullPage.verifyBasicLayouts();
+    });
 
-//     test('Test 2: Designer Selections Flow', async ({ doorDesignFullPage }, testInfo) => { 
-//         logTestCaseData(testInfo, dimensionScenario.testCaseData);
+    test('Test 2: Designer Selections Flow', async ({ DoorDesignFullPage }, testInfo) => { 
+        logTestCaseData(testInfo, dimensionScenario.testCaseData);
         
-//         await doorDesignFullPage.navigateToLoginPage();
-//         await doorDesignFullPage.dimensionFlow(dimensionScenario.dimensionData.widthInput, dimensionScenario.dimensionData.heightInput);
-//         await doorDesignFullPage.clickDoorDesignAndWait();
-//         await doorDesignFullPage.verifyDesignerSelections();
-//     });
+        await DoorDesignFullPage.navigateToLoginPage();
+        await DoorDesignFullPage.dimensionFlow(dimensionScenario.doorDesignData.widthInput, dimensionScenario.doorDesignData.heightInput);
+        await DoorDesignFullPage.clickDoorDesignAndWait();
+        await DoorDesignFullPage.verifyDesignerSelections();
+    });
 
-//     test('Test 3: Custom Layout Flow (Delete, Add, Align)', async ({ doorDesignFullPage }, testInfo) => { 
-//         logTestCaseData(testInfo, dimensionScenario.testCaseData);
+    test('Test 3: Custom Layout Flow (Delete, Add, Align)', async ({ DoorDesignFullPage }, testInfo) => { 
+        logTestCaseData(testInfo, dimensionScenario.testCaseData);
         
-//         await doorDesignFullPage.navigateToLoginPage();
-//         await doorDesignFullPage.dimensionFlow(dimensionScenario.dimensionData.widthInput, dimensionScenario.dimensionData.heightInput);
-//         await doorDesignFullPage.clickDoorDesignAndWait();
-//         await doorDesignFullPage.verifyCustomLayoutFlow();
-//     });
+        await DoorDesignFullPage.navigateToLoginPage();
+        await DoorDesignFullPage.dimensionFlow(dimensionScenario.doorDesignData.widthInput, dimensionScenario.doorDesignData.heightInput);
+        await DoorDesignFullPage.clickDoorDesignAndWait();
+        await DoorDesignFullPage.verifyCustomLayoutFlow();
+    });
 
-// });
+});

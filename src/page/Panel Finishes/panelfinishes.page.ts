@@ -18,9 +18,8 @@ export class PanelFinishesPage {
 
         this.playwrightActionsFactory = new PlaywrightActionFactory(page, testInfo);
         this.playwrightVerificationsFactory = new PlaywrightVerificationFactory(page, testInfo);
-        this.url = getEnvVariable("URL") || 'http://localhost:5860/doors-editor/';
+        this.url = getEnvVariable("URL") ;
 
-        
         this.locators = {
             panelFinishesBtn: {
                 description: "Panel Finishes Tab Button",
@@ -150,15 +149,9 @@ export class PanelFinishesPage {
             for (let door = 1; door <= 4; door++) {
                 
                 const beforeImg = await this.locators.canvas.locator.screenshot();
-
-                
                 const target = coordinates[door];
                 await this.page.mouse.click(target.x, target.y);
-                
-               
-                await this.page.waitForTimeout(1000); 
-
-               
+                await this.page.waitForTimeout(1000);
                 const afterImg = await this.locators.canvas.locator.screenshot();
                 expect(beforeImg).not.toEqual(afterImg);
             }
