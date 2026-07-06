@@ -26,7 +26,7 @@ const loginTestData: { [key: string]: LoginTestCaseData } = {
 };
 
 export function getData(testCase: string): LoginTestCaseData {
-    const data = loginTestData[testCase]      ;
+    const data = loginTestData[testCase];
 
     if (!data) {
         throw new Error(`Test case data not found for: ${testCase}`);
