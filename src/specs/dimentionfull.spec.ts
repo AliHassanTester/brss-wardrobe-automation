@@ -10,7 +10,7 @@ test.describe('Feature: Dimension Flow', () => {
     const loginScenario = getData('login-Data');
     const dimensionScenario = getDimensionData('dimension-Data');
 
-    test.only(
+    test(
         `Test case: ${loginScenario.testCaseData.testCase}
         Description: ${loginScenario.testCaseData.testDescription} - Dimension Flow
         Tags: ${loginScenario.testCaseData.tags} @dimension`,

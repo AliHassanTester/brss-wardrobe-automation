@@ -6,7 +6,7 @@ test.describe('Feature: WardrobeMan - System Flows (Quote & Archive)', () => {
 
     const quoteScenario = getData('quote-Data');
 
-    test.only(
+    test(
         `Test case: ${quoteScenario.testCaseData.testCase} - Sequence 1
         Description: ${quoteScenario.testCaseData.testDescription} - Staff login aur Quote form submission
         Tags: ${quoteScenario.testCaseData.tags} @sequence`,
@@ -26,7 +26,7 @@ test.describe('Feature: WardrobeMan - System Flows (Quote & Archive)', () => {
         }
     );
 
-    test.only(
+    test(
         `Test case: ${quoteScenario.testCaseData.testCase} - Sequence 2
         Description: ${quoteScenario.testCaseData.testDescription} - Archive aur Unarchive flow
         Tags: ${quoteScenario.testCaseData.tags} @archive`,
@@ -49,7 +49,7 @@ test.describe('Feature: WardrobeMan - System Flows (Quote & Archive)', () => {
             await quotePage.verifyDesignBackInActive();
         }
     );
-    test.only('Test Case 3: Submit quote, add door on canvas 4 times and compare screenshots', async ({ page, quotePage }) => {
+    test('Test Case 3: Submit quote, add door on canvas 4 times and compare screenshots', async ({ page, quotePage }) => {
         test.setTimeout(180000); 
         logTestCaseData(test.info(), quoteScenario.testCaseData);
 
@@ -63,7 +63,7 @@ test.describe('Feature: WardrobeMan - System Flows (Quote & Archive)', () => {
         await quotePage.navigateToDesignLibraryAndReload();
         await quotePage.editAndVerifyCanvasDoorAddition();
     });
-    test.only('Test Case 4: Execute Test Case 3 flow, update design and verify revision', async ({ page, quotePage }) => {
+    test('Test Case 4: Execute Test Case 3 flow, update design and verify revision', async ({ page, quotePage }) => {
         test.setTimeout(240000); 
         logTestCaseData(test.info(), quoteScenario.testCaseData);
 
@@ -79,7 +79,7 @@ test.describe('Feature: WardrobeMan - System Flows (Quote & Archive)', () => {
         await quotePage.updateDesignAndVerifyRevision();
     });
 
-    test.only(
+    test(
         `Test case: ${quoteScenario.testCaseData.testCase} - Sequence 5
         Description: ${quoteScenario.testCaseData.testDescription} - Dimension updates and eleven doors configuration flow
         Tags: ${quoteScenario.testCaseData.tags} @dimension-add`,
