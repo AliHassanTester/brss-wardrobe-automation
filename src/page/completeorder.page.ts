@@ -160,9 +160,9 @@ export class CompleteOrderPage {
                 description: "Updated Invoices Button",
                 locator: this.page.locator("//span[text()='Update Invoices']")
             },
-            price: {
+            email: {
                 description: "Price Value",
-                locator: this.page.locator("//span[text()='5']")
+                locator: this.page.locator("(//button[text()='Send Email'])[1]")
             },
             closeBtn: {
                 description: "Close Button",
@@ -170,7 +170,7 @@ export class CompleteOrderPage {
             },
             loginXeroBtn: {
                 description: "Login Xero Button",
-                locator: this.page.locator("(//span[text()='Log in'])[3]")
+                locator: this.page.locator("(//span[text()='Log in'])[2]")
             },
             xeroEmail: {
                 description: "Xero Email Input",
@@ -220,6 +220,10 @@ export class CompleteOrderPage {
                 description: "Verification Text",
                 locator: this.page.locator("//p[@id='ext-gen712']")
             },
+            Editaddbtn:{
+                description: "Edit add Button",
+                locator: this.page.locator("(//i[@class='bi bi-plus-circle-fill'])[1]")
+            },
             xeroLogBtn: {
                 description: "Xero Log Button",
                 locator: this.page.locator("//div[text()='Xero Log']")
@@ -248,8 +252,67 @@ export class CompleteOrderPage {
                 description: "Update Xero customer",
                 locator: this.page.locator("//button[text()='Update Xero Contact']")
             },
+
+            invoices:{
+                description: "Invoices",
+                locator: this.page.locator("//button[text()='Invoices']")
+            },
+            sendemail:{
+                description: "Send Email",
+                locator: this.page.locator("(//button[text()='Send Email'])[1]")
+            },
+            Active:{
+                description: "Active",
+                locator :this.page.locator("//b[text()='ACTIVE']")
+            },
+            Awaitingpayment:{
+                description: "Awaiting payment",
+                locator : this.page.locator("//span[text()='Awaiting Payment']")
+            },
+
+            reports:{
+                description: "Verify reports",
+                locator: this.page.locator("(//div[text()='Reports'])[2]")
+            },
+            OrderConfirm:{
+                description: "Order Confirm",
+                locator :this.page.locator("//button[text()='Order Confirmation']")
+            },
+            IdStore:{
+                description: "ID Store",
+                locator : this.page.locator("(//div[@style='font-weight: bold; font-size: 14px;'])[1]")
+            },
+            editDesignListBtn: {
+                description: "Edit Designs List Button",
+                locator: this.page.locator("//button[text()='Edit Designs List']")
+            },
+
+            verify2Designs: {
+                description: "Verify 2 Designs",
+                locator: this.page.locator("//div[text()='2']")
+            },
+
+            verify3Designs: {
+                description: "Verify 3 Designs",
+                locator: this.page.locator("//div[text()='3']")
+            },
+            editOrderBtn: {
+                description: "Edit Order Selection Button",
+                locator: this.page.locator("//button[text()='Edit - Order Selection']")
+            },
+
+            installationModifyBtn: {
+                description: "Installation Modify Button",
+                locator: this.page.locator("(//div[text()='Installation'])[1]/ancestor::div[1]/following-sibling::div//button")
+            },
+
+            verifyAmount: {
+                description: "Verify Amount",
+                locator: this.page.locator("//span[text()='1,280']")
+            },
         };
     }
+   
     public async navigateToUrl(): Promise<void> {
         await test.step("Navigate to base URL", async () => {
             await this.playwrightActionsFactory.navigateToURL(this.url);
@@ -324,34 +387,63 @@ export class CompleteOrderPage {
             await this.playwrightActionsFactory.sendKeys(this.locators.addressLine2,completeOrderData.addressLine2);
             await this.playwrightActionsFactory.click(this.locators.state);
             await this.playwrightActionsFactory.sendKeys(this.locators.state,completeOrderData.state);
-            const originalPage = this.page;
             await this.playwrightActionsFactory.click(this.locators.country);
             await this.playwrightActionsFactory.sendKeys(this.locators.country,completeOrderData.country);
             await this.playwrightActionsFactory.click(this.locators.postcode);
             await this.playwrightActionsFactory.sendKeys(this.locators.postcode,completeOrderData.postcode);
             await this.playwrightActionsFactory.click(this.locators.doneBtn);
             await this.playwrightActionsFactory.click(this.locators.saveChangesBtn);
-            // await this.page.goto('https://www.xero.com/login/');  
-            // await this.playwrightActionsFactory.click(this.locators.loginXeroBtn);
-            // await this.playwrightActionsFactory.click(this.locators.xeroEmail);
-            // await this.playwrightActionsFactory.sendKeys(this.locators.xeroEmail,"ali.qa.twm@gmail.com");
-            // await this.playwrightActionsFactory.click(this.locators.xeroPassword);
-            // await this.playwrightActionsFactory.sendKeys(this.locators.xeroPassword,"certa@2025");
-            // await this.playwrightActionsFactory.click(this.locators.xeroLoginBtn);
-            // await this.playwrightActionsFactory.click(this.locators.notNowBtn);
-            // await this.playwrightActionsFactory.click(this.locators.xeroAppBtn);
-            // await this.playwrightActionsFactory.click(this.locators.demoCompany);
-            // await originalPage.bringToFront();
-            await this.playwrightActionsFactory.click(this.locators.invoiceBtn);
-            // await this.playwrightActionsFactory.click(this.locators.Xerocustomer);
-            // await this.playwrightActionsFactory.click(this.locators.updatexerocustomer);
-            await this.playwrightActionsFactory.click(this.locators.updatedInvoices);
-            await this.page.waitForTimeout(60000);
-            await this.playwrightActionsFactory.waitForVisibility(this.locators.price);
-            await this.playwrightActionsFactory.click(this.locators.closeBtn);
-
         });
 
     }
 
+   public async verifyamount(): Promise<void> {
+        await this.playwrightActionsFactory.click(this.locators.invoiceBtn);
+        await this.playwrightActionsFactory.click(this.locators.Xerocustomer);
+        await this.playwrightActionsFactory.click(this.locators.updatexerocustomer);
+        await this.locators.Active.locator.waitFor({state: "visible",timeout: 60000,});
+        await this.playwrightActionsFactory.click(this.locators.invoices);
+        await this.playwrightActionsFactory.click(this.locators.updatedInvoices);
+        await this.locators.sendemail.locator.waitFor({state: "visible",timeout: 90000,});
+        await this.playwrightActionsFactory.click(this.locators.closeBtn);            
+        await this.locators.Awaitingpayment.locator.first().waitFor({state: "visible",timeout: 60000,});
+        await this.playwrightVerificationsFactory.verifyLocatorsCount(this.locators.Awaitingpayment,2);
+    }
+    
+    public async verifyPdfOrderConfirmation(): Promise<void> {
+        await this.playwrightActionsFactory.click(this.locators.reports);
+        const expectedId =
+            (await this.locators.IdStore.locator.textContent())?.trim() ?? "";
+        const [pdfPage] = await Promise.all([
+            this.page.context().waitForEvent("page"),
+            this.playwrightActionsFactory.click(this.locators.OrderConfirm),
+        ]);
+        await pdfPage.waitForLoadState();
+        await this.playwrightVerificationsFactory.verifyPdfContentByUrl(
+            pdfPage.url(),
+            expectedId
+        );
+    }
+
+    public async EditDesignsList(): Promise<void> {
+        await this.playwrightActionsFactory.click(this.locators.editDesignListBtn);
+        await this.playwrightActionsFactory.click(this.locators.addBtn);
+        await this.playwrightActionsFactory.click(this.locators.confirmBtn); 
+        await this.locators.verify2Designs.locator.waitFor({state: "visible",timeout: 60000,});
+        await this.playwrightActionsFactory.click(this.locators.editDesignListBtn);
+        await this.playwrightActionsFactory.click(this.locators.addBtn);
+        await this.playwrightActionsFactory.click(this.locators.confirmBtn); 
+        await this.locators.verify3Designs.locator.waitFor({state: "visible",timeout: 60000,});
+    }
+
+    public async EditOrder(): Promise<void> {
+        await this.playwrightActionsFactory.click(this.locators.editOrderBtn);
+        await this.playwrightActionsFactory.click(this.locators.installationModifyBtn);
+        await this.playwrightActionsFactory.click(this.locators.Editaddbtn);
+        await this.playwrightActionsFactory.click(this.locators.doneBtn);
+        await this.playwrightActionsFactory.click(this.locators.saveChangesBtn); 
+        await this.page.waitForTimeout(20000);
+        await this.locators.verifyAmount.locator.waitFor({state: "visible",timeout: 60000,});
+        await this.page.close();
+    }
 }

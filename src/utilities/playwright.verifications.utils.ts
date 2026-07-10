@@ -189,6 +189,19 @@ export class PlaywrightVerificationFactory {
     });
   }
 
+  public async verifyPdfContentByUrl(pdfUrl: string,expectedText: string): Promise<void> {
+    const response = await this.page.request.get(pdfUrl);
+    const filePath = "./downloads/temp.pdf";
+    if (!fs.existsSync("./downloads")) {
+        fs.mkdirSync("./downloads");
+    }
+    fs.writeFileSync(filePath, await response.body());
+    const pdfData = await PdfParse(fs.readFileSync(filePath));
+    const actualText = pdfData.text.replace(/\s+/g, " ");
+    expect(actualText).toContain(expectedText);
+    fs.unlinkSync(filePath);
+  }
+  
   public async waitForVisibility(locatorInfo: LocatorInfo, timeout: number = 30000): Promise<void> {
     await test.step(`⏳ Waiting for "${locatorInfo.description}" to be visible`, async (): Promise<void> => {
       await locatorInfo.locator.waitFor({ state: 'visible', timeout });
