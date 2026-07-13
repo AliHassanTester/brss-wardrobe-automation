@@ -102,7 +102,7 @@ export class CompleteOrderPage {
             },
             installationAddBtn: {
                 description: "Installation Add Button",
-                locator: this.page.locator("(//i[@class='bi bi-plus-circle-fill'])[1]")
+                locator: this.page.locator("(//div[@style='display: flex; gap: 10px; align-items: center;'])[1]//i[@class='bi bi-plus-circle-fill']")
             },
             selfPickupBtn: {
                 description: "Self Pickup Button",
@@ -310,6 +310,20 @@ export class CompleteOrderPage {
                 description: "Verify Amount",
                 locator: this.page.locator("//span[text()='1,280']")
             },
+            deleteOrder: {
+                description: "Delete Order",
+                locator: this.page.locator("//button[text()='Delete - Order Selections']")
+            },
+
+            yes: {
+                description: "Yes",
+                locator: this.page.locator("//button[text()='Yes']")
+            },
+
+            total: {
+                description: "Total",
+                locator: this.page.locator("//span[text()='0']")
+            },
         };
     }
    
@@ -330,19 +344,9 @@ export class CompleteOrderPage {
         await test.step("Perform Staff Login", async () => {
             await this.playwrightActionsFactory.click(this.locators.keyIcon);
             await this.playwrightActionsFactory.click(this.locators.staffLoginBtn);
-
-            await this.playwrightActionsFactory.sendKeys(
-                this.locators.loginEmail,
-                completeOrderData.username
-            );
-
-            await this.playwrightActionsFactory.sendKeys(
-                this.locators.loginPassword,
-                completeOrderData.password
-            );
-
+            await this.playwrightActionsFactory.sendKeys(this.locators.loginEmail,completeOrderData.username);
+            await this.playwrightActionsFactory.sendKeys(this.locators.loginPassword,completeOrderData.password);
             await this.playwrightActionsFactory.click(this.locators.loginBtn);
-
             await this.page.waitForTimeout(7000);
         });
     }
@@ -371,7 +375,8 @@ export class CompleteOrderPage {
             await this.playwrightActionsFactory.click(this.locators.customBtn);
             await this.playwrightActionsFactory.click(this.locators.addBtn);
             await this.playwrightActionsFactory.click(this.locators.confirmBtn);
-            await this.playwrightActionsFactory.click(this.locators.installationAddBtn);     
+            await this.playwrightActionsFactory.click(this.locators.installationAddBtn);
+            await this.page.waitForTimeout(3000);     
             await this.playwrightActionsFactory.click(this.locators.nextBtn);
             await this.playwrightActionsFactory.click(this.locators.selfPickupBtn);
             await this.playwrightActionsFactory.click(this.locators.nextBtn);
@@ -380,7 +385,6 @@ export class CompleteOrderPage {
             await this.playwrightActionsFactory.sendKeys(this.locators.inputField,completeOrderData.supplyprice);
             await this.playwrightActionsFactory.click(this.locators.applyBtn);
             await this.playwrightActionsFactory.click(this.locators.nextBtn);
-        
             await this.playwrightActionsFactory.click(this.locators.addressLine1);
             await this.playwrightActionsFactory.sendKeys(this.locators.addressLine1,completeOrderData.addressLine1);
             await this.playwrightActionsFactory.click(this.locators.addressLine2);
@@ -419,6 +423,7 @@ export class CompleteOrderPage {
             this.playwrightActionsFactory.click(this.locators.OrderConfirm),
         ]);
         await pdfPage.waitForLoadState();
+        await this.page.waitForTimeout(5000);
         await this.playwrightVerificationsFactory.verifyPdfContentByUrl(
             pdfPage.url(),
             expectedId
@@ -444,6 +449,15 @@ export class CompleteOrderPage {
         await this.playwrightActionsFactory.click(this.locators.saveChangesBtn); 
         await this.page.waitForTimeout(20000);
         await this.locators.verifyAmount.locator.waitFor({state: "visible",timeout: 60000,});
+        await this.page.close();
+    }
+
+    public async DeleteOrderSelection(): Promise<void> {
+        await this.playwrightActionsFactory.click(this.locators.deleteOrder);
+        await this.playwrightActionsFactory.click(this.locators.yes);
+        await this.page.waitForTimeout(35000);
+        await this.playwrightVerificationsFactory.verifyLocatorsCount(this.locators.total,3);
+        await this.playwrightVerificationsFactory.verifyLocatorsCount(this.locators.subOrderBtn,2);
         await this.page.close();
     }
 }
