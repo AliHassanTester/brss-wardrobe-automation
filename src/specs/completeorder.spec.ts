@@ -73,7 +73,7 @@ test.describe('Feature: WardrobeMan - Complete Order Flow', () => {
                 await completeOrderPage.EditOrder();
             }
         );
-        test.only(
+        test(
             `Test case: ${completeOrderScenario.testCaseData.testCase} - Delete Order Selection
             Description: ${completeOrderScenario.testCaseData.testDescription}
             Tags: ${completeOrderScenario.testCaseData.tags} @delete-order-selection @complete-order`,
