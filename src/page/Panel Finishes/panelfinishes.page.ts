@@ -136,24 +136,41 @@ export class PanelFinishesPage {
         });
     }
 
-   
     public async applyOnAllDoorsAndCompare(): Promise<void> {
-        await test.step("Apply on all door panels given coordinates and compare screenshots", async () => {
-            const coordinates: Record<number, { x: number; y: number }> = {
-                1: { x: 425, y: 170 },
-                2: { x: 414, y: 225 },
-                3: { x: 565, y: 227 },
-                4: { x: 755, y: 229 }
-            };
+        await test.step("Apply selected finish on all 4 doors and verify change", async () => {
 
-            for (let door = 1; door <= 4; door++) {
-                
+            const viewport = this.page.viewportSize();
+
+            if (!viewport) {
+                throw new Error("Viewport size is not available");
+            }
+
+            const doorXPositions = [
+                viewport.width * 0.115, // Door 1 ≈ 150
+                viewport.width * 0.262, // Door 2 ≈ 340
+                viewport.width * 0.408, // Door 3 ≈ 530
+                viewport.width * 0.554  // Door 4 ≈ 720
+            ];
+
+            const panelY = 225;
+
+            for (let door = 0; door < doorXPositions.length; door++) {
+
                 const beforeImg = await this.locators.canvas.locator.screenshot();
-                const target = coordinates[door];
-                await this.page.mouse.click(target.x, target.y);
+
+                await this.page.mouse.click(
+                    doorXPositions[door],
+                    panelY
+                );
+
                 await this.page.waitForTimeout(1000);
+
                 const afterImg = await this.locators.canvas.locator.screenshot();
-                expect(beforeImg).not.toEqual(afterImg);
+
+                expect(
+                    beforeImg.equals(afterImg),
+                    `Door ${door + 1} did not change after applying finish`
+                ).toBe(false);
             }
         });
     }

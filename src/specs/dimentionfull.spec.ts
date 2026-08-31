@@ -53,7 +53,7 @@ test.describe("Feature: Dimension Flow", () => {
         }
     );
 
-    test.only(
+    test(
         `Test case: ${disabledButtonScenario.testCaseData.testCase}
         Description: ${disabledButtonScenario.testCaseData.testDescription}
         Tags: ${disabledButtonScenario.testCaseData.tags} @door-add-button-disabled @dimension`,

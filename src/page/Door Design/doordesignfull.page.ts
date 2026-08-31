@@ -84,7 +84,7 @@ export class doorDesignFullPage {
     public async clickDoorDesignAndWait(): Promise<void> {
         await test.step("Click Door Design and wait 10 seconds", async () => {
             await this.locators.doordesignbutton.click();
-            
+            await this.page.mouse.click((await this.page.viewportSize())!.width / 2, (await this.page.viewportSize())!.height / 2);
         });
     }
 
