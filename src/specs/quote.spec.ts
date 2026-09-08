@@ -49,6 +49,7 @@ test.describe('Feature: WardrobeMan - System Flows (Quote & Archive)', () => {
             await quotePage.verifyDesignBackInActive();
         }
     );
+
     test('Test Case 3: Submit quote, add door on canvas 4 times and compare screenshots', async ({ page, quotePage }) => {
         test.setTimeout(180000); 
         logTestCaseData(test.info(), quoteScenario.testCaseData);
@@ -63,6 +64,7 @@ test.describe('Feature: WardrobeMan - System Flows (Quote & Archive)', () => {
         await quotePage.navigateToDesignLibraryAndReload();
         await quotePage.editAndVerifyCanvasDoorAddition();
     });
+
     test('Test Case 4: Execute Test Case 3 flow, update design and verify revision', async ({ page, quotePage }) => {
         test.setTimeout(240000); 
         logTestCaseData(test.info(), quoteScenario.testCaseData);
@@ -79,8 +81,7 @@ test.describe('Feature: WardrobeMan - System Flows (Quote & Archive)', () => {
         await quotePage.updateDesignAndVerifyRevision();
     });
 
-    test(
-        `Test case: ${quoteScenario.testCaseData.testCase} - Sequence 5
+    test(`Test case: ${quoteScenario.testCaseData.testCase} - Sequence 5
         Description: ${quoteScenario.testCaseData.testDescription} - Dimension updates and eleven doors configuration flow
         Tags: ${quoteScenario.testCaseData.tags} @dimension-add`,
 
@@ -97,7 +98,7 @@ test.describe('Feature: WardrobeMan - System Flows (Quote & Archive)', () => {
             await quotePage.verifyQuoteSubmissionSuccess();
             await quotePage.navigateToDesignLibraryAndReload();
             await quotePage.configureDimensionsAndAddElevenDoors(data);
-            await quotePage.updateDesignAndVerifyRevision();
+            await quotePage.updateDesignAndVerifyRevision2();
         }
     );
     

@@ -194,7 +194,6 @@ export class ProfileSelectionPage {
             await this.clickAndVerify(this.locators.SoftlineDoorPanelDivider);
             const beforeImg18mm = await this.locators.canvas.locator.screenshot();
             await this.playwrightActionsFactory.click(this.locators.SoftlineDoorPanelDivider18mm);
-            await this.playwrightActionsFactory.click(this.locators.yesbuttongripstile);
             await this.page.waitForTimeout(1000); 
             const afterImg18mm = await this.locators.canvas.locator.screenshot();
             expect(beforeImg18mm).not.toEqual(afterImg18mm);

@@ -82,6 +82,10 @@ export class QuotePage {
                 description: "Design Library Button",
                 locator: this.page.locator("(//button[text()='Design Library'])[2]")
             },
+            designLibraryBtn2: {
+                description: "Design Library Button",
+                locator: this.page.locator("(//button[text()='Design Library'])[1]")
+            },
             archiveBtn: {
                 description: "Archive Button",
                 locator: this.page.locator("//button[text()='Archive']")
@@ -125,6 +129,10 @@ export class QuotePage {
             revisionText: {
                 description: "Revision Element Verification",
                 locator: this.page.locator("(//div[text()='Design '])[2]")
+            },
+            revisionText2: {
+                description: "Revision Element Verification",
+                locator: this.page.locator("(//div[text()='Design '])[1]")
             },
             createNewDesignBtn: {
                 description: "Create New Design Button",
@@ -267,9 +275,16 @@ export class QuotePage {
     }
     public async updateDesignAndVerifyRevision(): Promise<void> {
         await test.step("Click Get a Quote, Update Design, and Verify Revision Element", async () => {
+            await this.playwrightActionsFactory.click(this.locators.designLibraryBtn2);
+            await this.page.waitForTimeout(3000);
+            await expect(this.locators.revisionText2.locator).toBeVisible({ timeout: 10000 });
+        });
+    }
+    public async updateDesignAndVerifyRevision2(): Promise<void> {
+        await test.step("Click Get a Quote, Update Design, and Verify Revision Element", async () => {
             await this.playwrightActionsFactory.click(this.locators.designLibraryBtn);
             await this.page.waitForTimeout(3000);
-            await expect(this.locators.revisionText.locator).toBeVisible({ timeout: 10000 });
+            await expect(this.locators.revisionText2.locator).toBeVisible({ timeout: 10000 });
         });
     }
 

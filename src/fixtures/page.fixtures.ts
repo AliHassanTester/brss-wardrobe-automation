@@ -4,7 +4,6 @@ import { DimensionfullPage } from '../page/dimensionfull.page';
 import { ProfileSelectionPage } from '../page/profileSelection/profileselection.page';
 import { doorDesignFullPage } from '../page/Door Design/doordesignfull.page';
 import { PanelFinishesPage } from '../page/Panel Finishes/panelfinishes.page';
-import { CompleteOrderPage } from '@page/completeorder.page';
 import { QuotePage } from '@page/Quote.Page';
 
 type PageFixtures = {
@@ -14,7 +13,6 @@ type PageFixtures = {
     DoorDesignFullPage: doorDesignFullPage;
     panelFinishesPage: PanelFinishesPage;   
     quotePage: QuotePage
-    completeOrderPage: CompleteOrderPage;
 };
 
 export const test = base.extend<PageFixtures>({
@@ -35,9 +33,6 @@ export const test = base.extend<PageFixtures>({
     }, 
     quotePage: async ({ page }, use, testInfo) => {
         await use(new QuotePage(page, testInfo));  
-    },
-    completeOrderPage: async ({ page }, use, testInfo) => {
-    await use(new CompleteOrderPage(page, testInfo));
     },
 });
 

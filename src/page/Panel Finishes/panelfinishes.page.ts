@@ -31,23 +31,23 @@ export class PanelFinishesPage {
             },
             translucentSuperWhite: {
                 description: "Translucent Super White Glass",
-                locator: this.page.locator("//div[text()='Translucent Super White Glass']/following-sibling::div[1]/div/div[1]")
+                locator: this.page.locator("//div[text()='Translucent Super White Glass(Matte)']/following-sibling::div[1]/descendant::div[2]")
             },
             translucentWhiteGlass: {
                 description: "Translucent White Glass",
-                locator: this.page.locator("//div[text()='Translucent White Glass']/following-sibling::div[1]/div/div")
+                locator: this.page.locator("//div[text()='Translucent White Glass (Glossy) 6mm']/following-sibling::div[1]/descendant::div[2]")
             },
             mirror: {
                 description: "Mirror Finish",
-                locator: this.page.locator("(//div[text()='Mirror']/following-sibling::div[1])[2]/div/div")
+                locator: this.page.locator("(//div[text()='Mirror']/following-sibling::div[1]/descendant::div[1])[2]")
             },
             polytecWoodmatt1: {
                 description: "Polytec Woodmatt Option 1",
-                locator: this.page.locator("(//div[text()='Polytec Woodmatt']/following-sibling::div[1])[2]/div/div/img")
+                locator: this.page.locator("(//div[text()='Polytec Woodmatt']/following-sibling::div[1]/descendant::div[1])[2]")
             },
             polytecWoodmatt2: {
                 description: "Polytec Woodmatt Option 2",
-                locator: this.page.locator("(//div[text()='Polytec Woodmatt']/following-sibling::div[1]//div[contains(@style, 'width: 60px')][1])[2]")
+                locator: this.page.locator("(//i[@class='bi bi-image'])[11]/ancestor::div[2]")
             },
             laminexGrain1: {
                 description: "Laminex Truescale Grain 1",
